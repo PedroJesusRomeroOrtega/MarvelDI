@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bulma/bulma.sass';
+
+$primary: #b52e31;;
+$primary-light: #eb7a7c;
+$link: $primary;
+$shade-light: #fafafa;
+
+.menu-list .router-link-active {
+  color: #fff;
+  background-color: $link;
+}
