@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
 
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { HandleError, HttpErrorHandler } from '../core/services';
 import { environment } from 'src/environments/environment';
 import { ComicsServiceModule } from './comics.service.module';
+import { Comic } from '../core/models';
 
 @Injectable({
   providedIn: ComicsServiceModule,
@@ -23,13 +24,18 @@ export class ComicsService {
     this.generateCredentials();
   }
 
-  getComics(): Observable<any> {
-    const url = `${environment.baseAPIUrl}v1/public/comics${this.credentials}`;
-    return this.http.get<any>(url).pipe(catchError(this.handleError('getComics', [])));
+  getComics(): Observable<Comic[]> {
+    const url = `${environment.baseAPIUrl}v1/public/comics${this.credentials}&hasDigitalIssue=true`;
+    return this.http.get<any>(url).pipe(
+      map((cdb) => <Comic[]>cdb.data.results),
+      catchError(this.handleError('getComics', [])),
+    );
   }
 
   private generateCredentials(): void {
-    this.hash = String(Md5.hashStr(`${this.timeStamp}${environment.privateApiKey}${environment.publicApiKey}`));
+    this.hash = String(
+      Md5.hashStr(`${this.timeStamp}${environment.privateApiKey}${environment.publicApiKey}`),
+    );
     this.credentials = `?ts=${this.timeStamp}&apikey=${environment.publicApiKey}&hash=${this.hash}`;
   }
 }

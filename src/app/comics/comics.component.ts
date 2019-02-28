@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { ComicsService } from './comics.service';
+import { Comic } from '../core/models';
 
 @Component({
   selector: 'app-comics',
@@ -11,15 +12,17 @@ import { ComicsService } from './comics.service';
 })
 export class ComicsComponent implements OnInit, OnDestroy {
   private _destroyed$: Subject<void> = new Subject();
+  comics$: Observable<Comic[]>;
   comics: any;
 
   constructor(private comicsService: ComicsService) {}
 
   ngOnInit() {
-    this.comicsService
-      .getComics()
-      .pipe(takeUntil(this._destroyed$))
-      .subscribe((comics) => (this.comics = comics.data.results));
+    this.comics$= this.comicsService.getComics();
+    // this.comicsService
+    //   .getComics()
+    //   .pipe(takeUntil(this._destroyed$))
+    //   .subscribe((comics: Comic[]) => (this.comics = comics));
   }
 
   ngOnDestroy(): void {
