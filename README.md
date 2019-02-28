@@ -29,3 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Providers used
    characterService -> providedIn: 'root',
    comicService -> provideIn: lazyServiceModule
+
+  character component -> // try to comment to see that all opinions are shown without taking into account if you are in characters or comics

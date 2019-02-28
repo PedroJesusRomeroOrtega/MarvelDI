@@ -4,11 +4,13 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Character } from '../core/models';
+import { MessageService } from '../core/services';
 
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styles: [],
+  providers: [MessageService], // try to comment to see that all opinions are shown without taking into account if you are in characters or comics
 })
 export class CharactersComponent implements OnInit, OnDestroy {
   private _destroyed$: Subject<void> = new Subject();
@@ -30,8 +32,8 @@ export class CharactersComponent implements OnInit, OnDestroy {
 
   searchCharacter(textToSeach: string) {
     this.charactersService
-    .getCharacters(textToSeach)
-    .pipe(takeUntil(this._destroyed$))
-    .subscribe((characters) => (this.characters = characters));
+      .getCharacters(textToSeach)
+      .pipe(takeUntil(this._destroyed$))
+      .subscribe((characters) => (this.characters = characters));
   }
 }

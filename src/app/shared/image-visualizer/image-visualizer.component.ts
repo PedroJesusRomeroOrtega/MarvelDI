@@ -10,11 +10,19 @@ import { Image } from 'src/app/core/models';
 export class ImageVisualizerComponent implements OnInit {
   @Input() image: Image;
   imagePath: string;
+  size = [
+    'standard_small',
+    'standard_medium',
+    'standard_large',
+    'standard_xlarge',
+    'standard_fantastic',
+    'standard_amazing',
+    'detail',
+  ];
 
   constructor() {}
 
   ngOnInit() {
-    // TODO: create a service provide in component to retrieve the size of the image
-    this.imagePath = `${this.image.path}/detail.${this.image.extension}`;
+    this.imagePath = `${this.image.path}/${this.size[6]}.${this.image.extension}`;
   }
 }
