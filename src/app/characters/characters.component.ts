@@ -27,4 +27,11 @@ export class CharactersComponent implements OnInit, OnDestroy {
     this._destroyed$.next();
     this._destroyed$.complete();
   }
+
+  searchCharacter(textToSeach: string) {
+    this.charactersService
+    .getCharacters(textToSeach)
+    .pipe(takeUntil(this._destroyed$))
+    .subscribe((characters) => (this.characters = characters));
+  }
 }

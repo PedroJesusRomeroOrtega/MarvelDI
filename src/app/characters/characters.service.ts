@@ -24,8 +24,13 @@ export class CharactersService {
     this.credentials = credendialsService.getCredentials();
   }
 
-  getCharacters(): Observable<Character[]> {
-    const url = `${environment.baseAPIUrl}v1/public/characters?${this.credentials}`;
+  getCharacters(nameStartWith: string = null): Observable<Character[]> {
+    let url = `${environment.baseAPIUrl}v1/public/characters?${this.credentials}`;
+
+    if (nameStartWith){
+      url = url + `&nameStartsWith=${nameStartWith}`
+    }
+
     return this.http.get<any>(url).pipe(
       map((cdb) => <Character[]>cdb.data.results),
       catchError(this.handleError('getCharacters', [])),

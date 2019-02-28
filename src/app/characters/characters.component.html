@@ -1,5 +1,6 @@
 <div class="content-container">
   <div class="column" *ngIf="characters">
+    <app-search-input (search) = "searchCharacter($event)"></app-search-input>
     <app-character-list [characters]="characters"></app-character-list>
   </div>
 </div>
