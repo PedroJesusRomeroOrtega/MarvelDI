@@ -1,6 +1,6 @@
 import { CharactersService } from './characters.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Character } from '../core/models';
@@ -14,15 +14,16 @@ import { MessageService } from '../core/services';
 })
 export class CharactersComponent implements OnInit, OnDestroy {
   private _destroyed$: Subject<void> = new Subject();
+  private suscription: Subscription;
   characters: Character[];
-
   constructor(private charactersService: CharactersService) {}
 
   ngOnInit() {
-    this.charactersService
+   this.suscription= this.charactersService
       .getCharacters()
       .pipe(takeUntil(this._destroyed$))
       .subscribe((characters) => (this.characters = characters));
+
   }
 
   ngOnDestroy(): void {
@@ -31,7 +32,8 @@ export class CharactersComponent implements OnInit, OnDestroy {
   }
 
   searchCharacter(textToSeach: string) {
-    this.charactersService
+    this.suscription.unsubscribe();
+    this.suscription=this.charactersService
       .getCharacters(textToSeach)
       .pipe(takeUntil(this._destroyed$))
       .subscribe((characters) => (this.characters = characters));
