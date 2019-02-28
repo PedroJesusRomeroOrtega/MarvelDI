@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from './services/message.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,7 @@ const components = [NavBarComponent, NotFoundComponent];
 
 @NgModule({
   declarations: [components],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule], //try to remove httpClientModule, what happens with charactersmodule???
   exports: [components],
   providers: [MessageService] //is better to put providein:'root' in messageService, because we can benefit of treeshake
 })

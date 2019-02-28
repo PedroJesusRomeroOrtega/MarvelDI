@@ -4,15 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { HandleError, HttpErrorHandler, CredentialsService } from '../core/services';
 import { environment } from 'src/environments/environment';
-import { ComicsServiceModule } from './comics.service.module';
-import { Comic } from '../core/models';
+import { Character } from '../core/models';
+import { HandleError, CredentialsService, HttpErrorHandler } from '../core/services';
 
 @Injectable({
-  providedIn: ComicsServiceModule,
+  providedIn: 'root',
 })
-export class ComicsService {
+export class CharactersService {
   private handleError: HandleError;
   private credentials: string;
 
@@ -25,13 +24,11 @@ export class ComicsService {
     this.credentials = credendialsService.getCredentials();
   }
 
-  getComics(): Observable<Comic[]> {
-    const url = `${environment.baseAPIUrl}v1/public/comics?${
-      this.credentials
-    }&hasDigitalIssue=true`;
+  getCharacters(): Observable<Character[]> {
+    const url = `${environment.baseAPIUrl}v1/public/characters?${this.credentials}`;
     return this.http.get<any>(url).pipe(
-      map((cdb) => <Comic[]>cdb.data.results),
-      catchError(this.handleError('getComics', [])),
+      map((cdb) => <Character[]>cdb.data.results),
+      catchError(this.handleError('getCharacters', [])),
     );
   }
 }

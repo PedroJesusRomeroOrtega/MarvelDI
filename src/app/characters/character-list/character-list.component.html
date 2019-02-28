@@ -1,0 +1,13 @@
+<ul class="list">
+  <li *ngFor="let character of characters" role="presentation">
+    <div class="card">
+      <div class="card-content">
+        <div class="content">
+          <div class="name">{{ character.name }}</div>
+          <div class="description">{{ character.description }}</div>
+          <app-image-visualizer [image]="character.thumbnail"></app-image-visualizer>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
