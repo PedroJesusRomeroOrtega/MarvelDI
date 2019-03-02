@@ -25,7 +25,7 @@ export class CharactersService {
   }
 
   getCharacters(nameStartWith: string = null): Observable<Character[]> {
-    let url = `${environment.baseAPIUrl}v1/public/characters?${this.credentials}`;
+    let url = `${environment.baseAPIUrl}v1/public/characters?${this.credentials}&limit=10`;
 
     if (nameStartWith){
       url = url + `&nameStartsWith=${nameStartWith}`

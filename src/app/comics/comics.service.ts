@@ -28,7 +28,7 @@ export class ComicsService {
   getComics(): Observable<Comic[]> {
     const url = `${environment.baseAPIUrl}v1/public/comics?${
       this.credentials
-    }&hasDigitalIssue=true`;
+    }&hasDigitalIssue=true&limit=10`;
     return this.http.get<any>(url).pipe(
       map((cdb) => <Comic[]>cdb.data.results),
       catchError(this.handleError('getComics', [])),
