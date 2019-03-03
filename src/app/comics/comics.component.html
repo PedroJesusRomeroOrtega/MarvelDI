@@ -1,6 +1,6 @@
 <div class="content-container">
-  <div *ngIf="(comics$ | async) as comics">
+  <ng-container *ngIf="(comics$ | async) as comics">
     <app-comic-list [comics]="comics"></app-comic-list>
     <app-show-opinion></app-show-opinion>
-  </div>
+  </ng-container>
 </div>
