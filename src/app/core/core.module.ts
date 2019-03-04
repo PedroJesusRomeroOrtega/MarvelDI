@@ -14,8 +14,13 @@ const components = [NavBarComponent, NotFoundComponent, FooterComponent, HeaderC
 
 @NgModule({
   declarations: [components],
-  imports: [CommonModule, RouterModule, HttpClientModule, FontAwesomeModule], //try to remove httpClientModule, what happens with charactersmodule???
-  exports: [components,FontAwesomeModule],
-  providers: [MessageService], //is better to put providein:'root' in messageService, because we can benefit of treeshake
+  imports: [
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule,
+    HttpClientModule, //try to remove httpClientModule, and uncomment in ComicsModule and CharactersModule. What happens with charactersmodule???
+  ],
+  exports: [components, FontAwesomeModule],
+  providers: [MessageService], //is better to use providein:'root' in messageService, because we can benefit of treeshake
 })
 export class CoreModule {}

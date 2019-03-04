@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+// import { HttpClientModule } from '@angular/common/http/http';
 
 import { CharactersComponent } from './characters.component';
 import { CharacterListComponent } from './character-list/character-list.component';
@@ -14,6 +15,7 @@ const routes: Routes = [{ path: '', component: CharactersComponent }];
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-  ], //is not necessary to put here HttpClientModule, because we have to import in coreModule because characterService has root providein
+    // HttpClientModule, //is not necessary to put here HttpClientModule, because we have to import in coreModule because characterService has root providein
+  ],
 })
 export class CharactersModule {}

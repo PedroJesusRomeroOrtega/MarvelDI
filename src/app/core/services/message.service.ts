@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable(
-   //{providedIn: 'root'}
+   //{providedIn: 'root'} // is better to use this provideIn and remove from core.module.ts providers
   )
 export class MessageService {
   messages: string[] = [];

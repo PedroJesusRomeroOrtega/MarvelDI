@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 
 import { ComicsComponent } from './comics.component';
 import { ComicsServiceModule } from './comics.service.module';
@@ -12,6 +12,12 @@ const routes: Routes = [{ path: '', component: ComicsComponent }];
 
 @NgModule({
   declarations: [ComicsComponent, ComicListComponent],
-  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes), ComicsServiceModule, SharedModule],
+  imports: [
+    CommonModule,
+    // HttpClientModule,
+    RouterModule.forChild(routes),
+    ComicsServiceModule,
+    SharedModule,
+  ],
 })
 export class ComicsModule {}
