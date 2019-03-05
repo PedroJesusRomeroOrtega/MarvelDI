@@ -24,31 +24,29 @@ npx angular-cli-ghpages --dir=dist/MarvelDI
 
 ![ngrev image](application-view.png)
 
-## Structure
+## Eager modules
 
-### Eager modules
+### AppModule
 
-#### AppModule
+### AppRoutingModule
 
-#### AppRoutingModule
+### CoreModule
 
-#### CoreModule
-
-##### CredentialsService
+#### CredentialsService
 
 It will be instantiated when _ComicsService_ or _CharactersService_ are instantiated.
 
 * Global singleton.
 * Lazy.
 
-##### HttpErrorHandler
+#### HttpErrorHandler
 
 It will be instantiated when _ComicsService_ or _CharactersService_ are instantiated.
 
 * Global singleton.
 * Lazy.
 
-##### MessageService
+#### MessageService
 
 It will be instantiated with CoreModule.
 Is better to use providein:'root' in messageService.
@@ -57,23 +55,32 @@ Is better to use providein:'root' in messageService.
 * Eager.
 * No treeshake.
 
-#### SharedModule
+### SharedModule
 
-### Lazy modules
+## Lazy modules
 
-#### ComicsModule
+### ComicsModule
 
-##### comicService
+#### ComicService
 
-provideIn: lazyServiceModule
+provideIn: ComicsServiceModule.
+It will be instantiated when ComicsComponent load.
+We can´t used ComicsModule directly because it generates circular dependencys. That´s why we use _ComicsServiceModule.
 
-#### CharactersModule
+* Singleton in ComicsModule.
+* Not accesible from another module
 
-##### characterService
+### CharactersModule
 
-providedIn: 'root',
+#### CharacterService
 
-##### CharactersComponent
+providedIn: 'root'.
+It will be instantiated when CharactersComponent load.
+
+* Global singleton
+* Lazy until a eager Component instantiate it.
+
+#### CharactersComponent
 
 _MessageService_ has it´s own instance for this component using _providers_.
 In this way the opinions are particular to this component, not shared with Comics.
