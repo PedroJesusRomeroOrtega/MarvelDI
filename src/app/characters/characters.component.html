@@ -1,7 +1,7 @@
 <div class="content-container">
-  <div *ngIf="characters">
-    <app-search-input (search) = "searchCharacter($event)"></app-search-input>
+  <app-search-input (search)="searchCharacter($event)"></app-search-input>
+  <ng-container *ngIf="(characters$ | async) as characters">
     <app-character-list [characters]="characters"></app-character-list>
-    <app-show-opinion></app-show-opinion>
-  </div>
+  </ng-container>
+  <app-show-opinion></app-show-opinion>
 </div>
