@@ -6,8 +6,15 @@ import { ImageVisualizerComponent } from './image-visualizer/image-visualizer.co
 import { SearchInputComponent } from './search-input/search-input.component';
 import { AddOpinionComponent } from './add-opinion/add-opinion.component';
 import { ShowOpinionComponent } from './show-opinion/show-opinion.component';
+import { ItemComponent } from './item/item.component';
 
-const components = [ImageVisualizerComponent, SearchInputComponent,AddOpinionComponent,ShowOpinionComponent];
+const components = [
+  ImageVisualizerComponent,
+  SearchInputComponent,
+  AddOpinionComponent,
+  ShowOpinionComponent,
+  ItemComponent,
+];
 
 @NgModule({
   declarations: [components],

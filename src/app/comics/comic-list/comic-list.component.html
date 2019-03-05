@@ -1,14 +1,9 @@
 <ul class="list">
   <li *ngFor="let comic of comics; trackBy: byId; let i = index" role="presentation">
-    <div class="card">
-      <div class="card-content">
-        <div class="content">
-          <div class="name">{{ comic.title }}</div>
-          <div class="description">{{ comic.description }}</div>
-          <app-image-visualizer [image] = "comic.thumbnail"></app-image-visualizer>
-          <app-add-opinion></app-add-opinion>
-        </div>
-      </div>
-    </div>
+    <app-item
+      [title]="comic.title"
+      [description]="comic.description"
+      [image]="comic.thumbnail"
+    ></app-item>
   </li>
 </ul>
