@@ -20,8 +20,6 @@ export class ImageVisualizerComponent implements OnInit {
     'detail',
   ];
 
-  constructor() {}
-
   ngOnInit() {
     this.imagePath = `${this.image.path}/${this.size[6]}.${this.image.extension}`;
   }

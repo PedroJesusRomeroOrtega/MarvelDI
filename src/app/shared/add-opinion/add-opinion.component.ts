@@ -1,12 +1,12 @@
 import { MessageService } from '../../core/services';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-add-opinion',
   templateUrl: './add-opinion.component.html',
   styles: [],
 })
-export class AddOpinionComponent  {
+export class AddOpinionComponent {
   constructor(private messageService: MessageService) {}
 
   AddOpinion(text: string) {

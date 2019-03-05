@@ -1,16 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from 'src/app/core/models';
 
 @Component({
   selector: 'app-character-list',
   templateUrl: './character-list.component.html',
-  styles: []
+  styles: [],
 })
-export class CharacterListComponent implements OnInit {
-@Input() characters: Character[];
-  constructor() { }
+export class CharacterListComponent {
+  @Input() characters: Character[];
 
-  ngOnInit() {
+  byId(index:number,character: Character) {
+    return character.id;
   }
-
 }

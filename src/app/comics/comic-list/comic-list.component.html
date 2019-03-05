@@ -1,5 +1,5 @@
 <ul class="list">
-  <li *ngFor="let comic of comics; trackBy: byId; let i = index" role="presentation">
+  <li *ngFor="let comic of comics; trackBy: byId;" role="presentation">
     <app-item
       [title]="comic.title"
       [description]="comic.description"
