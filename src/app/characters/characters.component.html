@@ -1,5 +1,5 @@
 <div class="content-container">
-  <app-search-input (search)="searchCharacter($event)"></app-search-input>
+  <app-search-input [isSearching]="isSearching" (search)="searchCharacter($event)"></app-search-input>
   <ng-container *ngIf="(characters$ | async) as characters">
     <app-character-list [characters]="characters"></app-character-list>
   </ng-container>

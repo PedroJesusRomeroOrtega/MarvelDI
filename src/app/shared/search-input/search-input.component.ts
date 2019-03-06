@@ -1,5 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+// import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search-input',
@@ -7,8 +7,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styles: [],
 })
 export class SearchInputComponent {
+  @Input() isSearching = false;
   @Output() search = new EventEmitter<string>();
-  faSearch = faSearch;
+  // faSearch = faSearch;
 
   onChangeText(text: string) {
     this.search.emit(text);

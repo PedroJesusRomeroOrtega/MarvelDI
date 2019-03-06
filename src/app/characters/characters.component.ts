@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { Character } from '../core/models';
 import { MessageService } from '../core/services';
-import { debounceTime, distinctUntilChanged, switchMapTo, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-characters',
@@ -18,6 +18,7 @@ export class CharactersComponent implements OnInit {
   // characters: Character[];
   searchCharacters = new Subject<string>();
   characters$: Observable<Character[]>;
+  isSearching = false;
 
   constructor(private charactersService: CharactersService) {}
 
@@ -29,7 +30,9 @@ export class CharactersComponent implements OnInit {
     this.characters$ = this.searchCharacters.pipe(
       debounceTime(300),
       distinctUntilChanged(),
+      tap(() => (this.isSearching = true)),
       switchMap((textToSearch) => this.charactersService.getCharacters(textToSearch)),
+      tap(() => (this.isSearching = false)),
     );
   }
 

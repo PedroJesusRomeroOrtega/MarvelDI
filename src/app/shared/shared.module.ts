@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CoreModule } from './../core/core.module';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { ImageVisualizerComponent } from './image-visualizer/image-visualizer.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { AddOpinionComponent } from './add-opinion/add-opinion.component';
@@ -18,7 +21,11 @@ const components = [
 
 @NgModule({
   declarations: [components],
-  imports: [CommonModule, CoreModule],
-  exports: [components],
+  imports: [CommonModule, FontAwesomeModule],
+  exports: [components, FontAwesomeModule],
 })
-export class SharedModule {}
+export class SharedModule {
+  constructor() {
+    library.add(faSearch);
+  }
+}
