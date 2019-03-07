@@ -1,0 +1,19 @@
+@startuml DependencyInjection
+
+state "provideIn: 'root' | module (new way)" as ProvideInNewWay{
+  state "provideIn: 'root'" as ProvideInRoot
+  [*] --> ProvideInRoot
+  ProvideInRoot : Treeshake
+  ProvideInRoot : The best for libraries services
+  ProvideInRoot : Lazy loading for services used in lazy modules
+  state "providenIn: eagerModule" as ProvideInEager
+  [*] --> ProvideInEager
+  ProvideInEager : Not recomended
+  ProvideInEager: Prevent to use a service in other module
+  state "provideIn: lazyModule" as ProvideInLazy
+  [*] --> ProvideInLazy
+  ProvideInLazy : Lazy service only used in the lazy module
+  ProvideInLazy: LazyServiceModule to abort circular dependency
+}
+
+@enduml
