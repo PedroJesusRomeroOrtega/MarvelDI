@@ -30,6 +30,8 @@ npx angular-cli-ghpages --dir=dist/MarvelDI
 
 ![new way DI](https://g.gravizo.com/source/svg?https://raw.githubusercontent.com/PedroJesusRomeroOrtega/MarvelDI/master/docs/diagrams/new-way-DI.plantuml)
 
+> Bubling up throught the injector tree until it reaches the root injector
+
 ## Eager modules
 
 ### AppModule

@@ -3,17 +3,24 @@
 state "provideIn: 'root' | module (new way)" as ProvideInNewWay{
   state "provideIn: 'root'" as ProvideInRoot
   [*] --> ProvideInRoot
-  ProvideInRoot : Treeshake
-  ProvideInRoot : The best for libraries services
-  ProvideInRoot : Lazy loading for services used in lazy modules
+  ProvideInRoot : - Treeshake
+  ProvideInRoot : - The best for libraries services
+  ProvideInRoot : - Lazy loading for services\n  used in lazy modules
   state "providenIn: eagerModule" as ProvideInEager
   [*] --> ProvideInEager
-  ProvideInEager : Not recomended
-  ProvideInEager: Prevent to use a service in other module
+  ProvideInEager : - Not recomended
+  ProvideInEager: - Prevent to use a service in other module
   state "provideIn: lazyModule" as ProvideInLazy
   [*] --> ProvideInLazy
-  ProvideInLazy : Lazy service only used in the lazy module
-  ProvideInLazy: LazyServiceModule to abort circular dependency
+  ProvideInLazy : - Lazy service only used\n  in the lazy module
+  ProvideInLazy: - LazyServiceModule to abort\n  circular dependency
+
+  note bottom of ProvideInRoot
+    Be careful of using lazy services with provideIn:root;
+    if then you instantiate in a eager part,
+    then this service will be in the eager bundle.
+    With a lot of services it can be a mess.
+  end note
 }
 
 @enduml
