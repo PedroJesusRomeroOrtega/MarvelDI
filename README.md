@@ -22,11 +22,13 @@ npx angular-cli-ghpages --dir=dist/MarvelDI
 
 ## Application View (generated with [ngrev](https://github.com/mgechev/ngrev))
 
-![ngrev image](docs\images\application-view.png)
+![ngrev image](docs/images/application-view.png)
 
 ## Dependency injection explanation
 
+![old way DI](https://g.gravizo.com/source/svg?https://raw.githubusercontent.com/PedroJesusRomeroOrtega/MarvelDI/master/docs/diagrams/old-way-DI.plantuml)
 
+![new way DI](https://g.gravizo.com/source/svg?https://raw.githubusercontent.com/PedroJesusRomeroOrtega/MarvelDI/master/docs/diagrams/new-way-DI.plantuml)
 
 ## Eager modules
 
