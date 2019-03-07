@@ -2,15 +2,15 @@
 
 state "Providers: [] (old way)" as ProvidersOldWay{
   [*] --> Eager_Module
-  Eager_Module : Global singleton
-  Eager_Module : Public libraries services without treeshake
+  Eager_Module : - Global singleton
+  Eager_Module : - Public libraries services\n  without treeshake
   [*] --> Lazy_Module
-  Lazy_Module : Singleton in the module
+  Lazy_Module : - Singleton in the module
   [*] --> Component_Directive
-  Component_Directive : Instantiate in the component
-  Component_Directive : Accesible in child Component
-  Component_Directive : Not singleton
-  Component_Directive : New instance every time we use
+  Component_Directive : - Instantiate in the component
+  Component_Directive : - Accesible in child Component
+  Component_Directive : - Not singleton
+  Component_Directive : - New instance every time we use
 }
 
 @enduml
