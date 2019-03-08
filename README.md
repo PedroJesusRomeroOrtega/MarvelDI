@@ -93,3 +93,11 @@ It will be instantiated when CharactersComponent load.
 _MessageService_ has it´s own instance for this component using _providers_.
 In this way the opinions are particular to this component, not shared with Comics.
 Try to comment to see that all opinions are shown without taking into account if you are in characters or comics.
+
+## References
+
+[Dependency injection by Tomas Trajan](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
+
+[Oficial guide](https://angular.io/guide/dependency-injection)
+
+[John Papa example](https://github.com/johnpapa/heroes-angular)
