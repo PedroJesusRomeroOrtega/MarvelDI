@@ -1,7 +1,12 @@
 # MarvelDI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
-It uses [Bulma CSS framework](https://bulma.io/).
+
+It uses:
+
+- [Bulma CSS framework](https://bulma.io/)
+- [FontAwesome for Angular](https://github.com/FortAwesome/angular-fontawesome)
+- [Rxjs](https://github.com/ReactiveX/rxjs)
 
 I used this app to practice with dependency injection.
 
